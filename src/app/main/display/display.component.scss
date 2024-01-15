@@ -1,10 +1,10 @@
 :is(
-    .input-wrapper .input-form-control,
-    .input-wrapper .input-form-control:disabled
+    .item-wrapper .input-form-control,
+    .item-wrapper .input-form-control:disabled
   ) {
   background-color: transparent;
 }
-.item-section {
+.details-section {
   padding: 24px 30.39px;
   background-color: #ffffff;
   position: relative;
@@ -59,12 +59,12 @@
   }
 }
 
-.input-wrapper {
+.item-wrapper {
   padding: 10px;
   width: 223px;
 }
 
-.input-wrapper .label-form {
+.item-wrapper .span-value {
   padding: 0px;
   margin-bottom: 0.25rem;
   color: var(--sub-title-gray, #6f7885);
@@ -75,7 +75,7 @@
   line-height: normal;
   letter-spacing: 0.36px;
 }
-.input-wrapper .input-form-control {
+.item-wrapper .input-form-control {
   display: block;
   width: 100%;
   padding: 10px;
@@ -108,13 +108,13 @@
   }
 }
 
-.input-wrapper .input-value {
+.item-wrapper .item-value {
   margin-bottom: 0;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--components-gray2, #edeff7);
 }
 
-.input-wrapper .input-value p {
+.item-wrapper .item-value p {
   color: var(--blue-dark-text, #172051);
   /* poppins 12 semibold */
   font-family: Poppins;

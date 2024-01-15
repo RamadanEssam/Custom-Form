@@ -1,10 +1,10 @@
-<section class="item-section">
+<section class="details-section">
   <div class="container-main">
     <div class="row-flex" *ngFor="let rowFields of getRowFields(formFields)">
       <div class="column-quarter" *ngFor="let field of rowFields">
-        <div class="input-wrapper">
-          <label class="label-form">{{ field.label }}</label>
-          <p class="input-value">{{ field.defaultValue }}</p>
+        <div class="item-wrapper">
+          <label class="span-value">{{ field.label }}</label>
+          <p class="item-value">{{ field.defaultValue }}</p>
         </div>
       </div>
     </div>
