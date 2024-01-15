@@ -1,0 +1,161 @@
+<section class="item-section">
+  <div class="container-main">
+    <form [formGroup]="itemsForm" (ngSubmit)="saveChanges()">
+      <!-- Dynamic Rows -->
+      <div
+        class="row-flex"
+        *ngFor="
+          let rowFields of getRowFields(formFields);
+          trackBy: getRowFieldsTrackBy
+        "
+      >
+        <div class="column-quarter" *ngFor="let field of rowFields">
+          <div class="input-wrapper">
+            <label [for]="field.controlName" class="label-form">
+              {{ field.label }}
+              <span
+                *ngIf="isEditMode && isFieldRequired(field.controlName)"
+                class="required-asterisk"
+                >*</span
+              >
+            </label>
+
+            <ng-container [ngSwitch]="field.type">
+              <input
+                *ngSwitchCase="'text'"
+                [formControlName]="field.controlName"
+                [id]="field.controlName"
+                class="input-form-control"
+                type="text"
+              />
+              <input
+                *ngSwitchCase="'password'"
+                [formControlName]="field.controlName"
+                [id]="field.controlName"
+                class="input-form-control"
+                type="password"
+              />
+              <input
+                *ngSwitchCase="'number'"
+                [formControlName]="field.controlName"
+                [id]="field.controlName"
+                class="input-form-control"
+                type="number"
+              />
+              <input
+                *ngSwitchCase="'date'"
+                [formControlName]="field.controlName"
+                [id]="field.controlName"
+                class="input-form-control"
+                type="date"
+              />
+              <input
+                *ngSwitchCase="'email'"
+                [formControlName]="field.controlName"
+                [id]="field.controlName"
+                class="input-form-control"
+                type="email"
+              />
+              <input
+                *ngSwitchCase="'radio'"
+                [formControlName]="field.controlName"
+                [id]="field.controlName"
+                class="input-form-control"
+                type="radio"
+              />
+              <input
+                *ngSwitchCase="'checkbox'"
+                [formControlName]="field.controlName"
+                [id]="field.controlName"
+                class="input-form-control"
+                type="checkbox"
+              />
+              <!-- Add other input types as needed -->
+              <select
+                *ngSwitchCase="'select'"
+                [formControlName]="field.controlName"
+                class="input-form-control"
+              >
+                <option
+                  *ngFor="let option of field.options"
+                  [value]="option.value"
+                >
+                  {{ option.label }}
+                </option>
+              </select>
+            </ng-container>
+
+            <!-- Error Messages -->
+            <div
+              *ngIf="
+                itemsForm.get(field.controlName)?.invalid &&
+                itemsForm.get(field.controlName)?.touched
+              "
+              class="error-message"
+            >
+              <div
+                *ngIf="itemsForm.get(field.controlName)?.errors?.['required']"
+              >
+                This field is required.
+              </div>
+              <div
+                *ngIf="itemsForm.get(field.controlName)?.errors?.['minlength']"
+              >
+                Minimum length required is
+                {{ itemsForm.get(field.controlName)?.errors?.['minlength']?.requiredLength
+
+
+
+
+                }}.
+              </div>
+              <div
+                *ngIf="itemsForm.get(field.controlName)?.errors?.['noSpacesValidator']"
+              >
+                Spaces are not allowed.
+              </div>
+              <div *ngIf="itemsForm.get(field.controlName)?.errors?.['email']">
+                Invalid email format.
+              </div>
+              <!-- Add other error types as needed -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-form">
+        <button
+          *ngIf="!isEditMode"
+          type="button"
+          class="btn-edit-mode"
+          (click)="activateEditMode()"
+        >
+          <img
+            src="../../assets/svgs/edit-icon.svg"
+            class="svg-btn"
+            alt="Edit"
+          />
+        </button>
+        <button
+          *ngIf="isEditMode"
+          type="submit"
+          (keyDown.enter)="saveChanges()"
+          class="btn-save-changes"
+          [disabled]="!isSaveButtonEnabled"
+        >
+          Save
+        </button>
+
+        <button
+          *ngIf="isEditMode"
+          type="button"
+          class="btn-cancel-action"
+          (click)="cancelAction()"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+  <app-spinner *ngIf="isLoading" class="spinner"></app-spinner>
+</section>

@@ -1,0 +1,10 @@
+<section class="item-selector">
+  <div class="menu">
+    <div class="menu-item" *ngFor="let item of menuItems"
+         [ngClass]="{'active': item === activeItem}"
+         (click)="onMenuItemClick(item)">
+        <img [src]="item.icon"   alt="Edit">
+      <span>{{ item.label }}</span>
+    </div>
+  </div>
+</section>

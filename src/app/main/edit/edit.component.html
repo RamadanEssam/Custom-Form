@@ -1,0 +1,74 @@
+<section class="item-section">
+  <div class="container-main">
+    <form [formGroup]="itemsForm" (ngSubmit)="saveChanges()">
+      <!-- Dynamic Rows -->
+      <div class="row-flex" *ngFor="
+          let rowFields of getRowFields(formFields);
+          trackBy: getRowFieldsTrackBy">
+        <div class="column-quarter" *ngFor="let field of rowFields">
+          <div class="input-wrapper">
+            <label [for]="field.controlName" class="label-form">
+              {{ field.label }}
+              <span *ngIf=" isFieldRequired(field.controlName)" class="required-asterisk">*</span>
+            </label>
+
+            <ng-container [ngSwitch]="field.type">
+              <input *ngSwitchCase="'text'" [formControlName]="field.controlName" [id]="field.controlName"
+                class="input-form-control border-edit-mode" type="text" />
+              <input *ngSwitchCase="'password'" [formControlName]="field.controlName" [id]="field.controlName"
+                class="input-form-control border-edit-mode" type="password" />
+              <input *ngSwitchCase="'number'" [formControlName]="field.controlName" [id]="field.controlName"
+                class="input-form-control border-edit-mode" type="number" />
+              <input *ngSwitchCase="'date'" [formControlName]="field.controlName" [id]="field.controlName"
+                class="input-form-control border-edit-mode" type="date" />
+              <input *ngSwitchCase="'email'" [formControlName]="field.controlName" [id]="field.controlName"
+                class="input-form-control border-edit-mode" type="email" />
+              <input *ngSwitchCase="'radio'" [formControlName]="field.controlName" [id]="field.controlName"
+                class="input-form-control border-edit-mode" type="radio" />
+              <input *ngSwitchCase="'checkbox'" [formControlName]="field.controlName" [id]="field.controlName"
+                class="input-form-control border-edit-mode" type="checkbox" />
+              <!-- Add other input types as needed -->
+              <select *ngSwitchCase="'select'" [formControlName]="field.controlName" class="input-form-control border-edit-mode">
+                <option *ngFor="let option of field.options" [value]="option.value">
+                  {{ option.label }}
+                </option>
+              </select>
+            </ng-container>
+
+            <!-- Error Messages -->
+            <div *ngIf="
+                itemsForm.get(field.controlName)?.invalid &&
+                itemsForm.get(field.controlName)?.touched
+              " class="error-message">
+              <div *ngIf="itemsForm.get(field.controlName)?.errors?.['required']">
+                This field is required.
+              </div>
+              <div *ngIf="itemsForm.get(field.controlName)?.errors?.['minlength']">
+                Minimum length required is
+                {{ itemsForm.get(field.controlName)?.errors?.['minlength']?.requiredLength}}.
+              </div>
+              <div *ngIf="itemsForm.get(field.controlName)?.errors?.['noSpacesValidator']">
+                Spaces are not allowed.
+              </div>
+              <div *ngIf="itemsForm.get(field.controlName)?.errors?.['email']">
+                Invalid email format.
+              </div>
+              <!-- Add other error types as needed -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-form">
+        <button type="submit" (keyDown.enter)="saveChanges()" class="btn-save-changes"
+          [disabled]="!isSaveButtonEnabled">
+          Save
+        </button>
+
+        <button type="button" class="btn-cancel-action" (click)="cancelAction()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

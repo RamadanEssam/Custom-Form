@@ -1,0 +1,10 @@
+<div class="actions-container">
+  <h2 class="actions-title">{{ title }}</h2>
+  <div class="buttons-container">
+    <div *ngFor="let item of actionItems">
+      <a [routerLink]="[item.route]" class="action-link">
+        {{ item.label }}
+      </a>
+    </div>
+  </div>
+</div>

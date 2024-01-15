@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="icon">
+    <img [src]="iconSrc">
+  </div>
+  <div class="info">
+    <div class="title">{{ title }}</div>
+    <div class="array">
+      <ng-container *ngFor="let detail of details; let last = last">
+        <span *ngIf="detail.type === 'Status' && detail.value === 'true'">
+          <img class="status" [src]="iconSrcOne">
+        </span>
+        <span *ngIf="detail.type === 'Status' && detail.value === 'false'">
+          <img class="status" [src]="iconSrcTwo">
+        </span>
+        <span *ngIf="detail.type !== 'Status'">
+          {{ detail.type }}: {{ detail.value }}
+        </span>
+        <!-- Separator after each span except the last one -->
+        <span class="separator" *ngIf="!last"></span>
+      </ng-container>
+    </div>
+  </div>
+</div>
