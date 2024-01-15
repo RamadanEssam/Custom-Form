@@ -82,6 +82,7 @@
   padding-left: 0px;
   background-color: #fff;
   background-clip: padding-box;
+  line-height: normal;
   border-radius: 0.25rem;
   font-size: 12px;
   font-family: Poppins;
@@ -91,7 +92,7 @@
   border: 0;
   border-bottom: 1px solid var(--components-gray2, #edeff7);
   font-style: normal;
-  line-height: normal;
+
   //sdsd
   &:focus {
     color: #495057;
