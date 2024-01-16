@@ -1,4 +1,4 @@
-<section class="details-section">
+ <section class="details-section">
   <div class="container-main">
     <div class="row-flex" *ngFor="let rowFields of getRowFields(formFields)">
       <div class="column-quarter" *ngFor="let field of rowFields">
@@ -11,8 +11,8 @@
   </div>
   @if(!isEditMode) {
     <div  class="buttons-form">
-      <button type="button" class="btn-edit-mode" (click)="onEditMode()">
-        <img src="../../assets/svgs/edit-icon.svg" class="svg-btn" alt="Edit" />
+      <button type="button" class="btn-edit-mode" (click)="edit.emit()">
+        <img src="../../../../assets/svgs/edit-icon.svg" class="svg-btn" alt="Edit" />
       </button>
     </div>
   }

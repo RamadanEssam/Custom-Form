@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ItemFormField } from '../item-form-field';
+import { ItemAttribute } from '../../ItemAttribute';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { SpinnerComponent } from "../shared/spinner/spinner.component";
+import { SpinnerComponent } from "../../shared/spinner/spinner.component";
 
 @Component({
     selector: 'app-item-attributes',
@@ -15,7 +15,7 @@ import { SpinnerComponent } from "../shared/spinner/spinner.component";
 
 export class ItemAttributesComponent implements OnInit {
 
-  @Input() formFields: ItemFormField[] = [];
+  @Input() formFields: ItemAttribute[] = [];
   @Output() onSubmit = new EventEmitter<any>();
 
   itemsForm!: FormGroup;
@@ -32,8 +32,8 @@ export class ItemAttributesComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
   }
-  getRowFields(fields: ItemFormField[]): ItemFormField[][] {
-    const rows: ItemFormField[][] = [];
+  getRowFields(fields: ItemAttribute[]): ItemAttribute[][] {
+    const rows: ItemAttribute[][] = [];
     const itemsPerRow = 3;
 
     for (let i = 0; i < fields.length; i += itemsPerRow) {
@@ -41,7 +41,7 @@ export class ItemAttributesComponent implements OnInit {
     }
     return rows;
   }
-  getRowFieldsTrackBy(index: number, itemArray: ItemFormField[]): any {
+  getRowFieldsTrackBy(index: number, itemArray: ItemAttribute[]): any {
     return itemArray.length > 0 ? itemArray[0].controlName : index;
   }
   private initializeForm(): void {

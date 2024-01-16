@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemFormField } from '../../item-form-field';
+import { ItemAttribute } from '../../ItemAttribute';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrl: './text-input.component.scss'
 })
 export class TextInputComponent {
-  @Input() field!: ItemFormField;
+  @Input() field!: ItemAttribute;
   @Input() form!: FormGroup;
 
   get control(): FormControl {

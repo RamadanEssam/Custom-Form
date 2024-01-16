@@ -1,10 +1,10 @@
-export enum FormFieldType {
+export enum AttributeType {
   Text = 'text',
   Password = 'password',
-  Checkbox = 'checkbox',
-  Radio = 'radio',
   Select = 'select',
-  Date = 'date',
   Number = 'number',
   Email = 'email'
+   // Checkbox = 'checkbox',
+  // Radio = 'radio',
+  // Date = 'date',
 }

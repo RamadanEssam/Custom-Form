@@ -1,45 +1,34 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  Renderer2,
-} from '@angular/core';
-import { ItemAttribute } from '../../ItemAttribute';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  ValidationErrors,
-  ValidatorFn,
-} from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpinnerComponent } from '../../shared/spinner/spinner.component';
-import { FormServiceService } from '../../serveses/form-service.service';
+import { FormGroup, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors, ReactiveFormsModule } from '@angular/forms';
+import { ItemAttribute } from '../../../ItemAttribute';
+
 
 @Component({
-  selector: 'app-edit',
+  selector: 'app-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SpinnerComponent],
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  imports: [CommonModule ,ReactiveFormsModule],
+  templateUrl: './form.component.html',
+  styleUrl: './form.component.scss'
 })
-export class EditComponent implements OnInit {
+export class FormComponent  implements OnInit {
   @Input() formFields: ItemAttribute[] = [];
-  @Output() onSubmit = new EventEmitter<any>();
+
+
+  @Input() isEditMode!: boolean;
+  @Output() onSubmit = new EventEmitter<void>();
+  @Output() onCancel = new EventEmitter<void>();
 
   itemsForm!: FormGroup;
   originalFormValues: any;
-  isEditMode = false;
+
   isSaveButtonEnabled = false;
   isLoading = false;
 
   constructor(
     private fb: FormBuilder,
-    private renderer: Renderer2,
-    private _formService: FormServiceService
+    private renderer: Renderer2
+
   ) {
     this.itemsForm = this.fb.group({}); // Initialize the form group
   }
@@ -80,7 +69,7 @@ export class EditComponent implements OnInit {
       this.onSubmit.emit(formData);
       console.log('values', formData);
       this.resetFormState();
-      this.onDetailsMode();
+      this.isEditMode=false;
 
     } else {
       this.markAllAsTouched();
@@ -111,13 +100,15 @@ export class EditComponent implements OnInit {
     };
   }
   cancelAction(): void {
-    // this.itemsForm.reset(this.initialFormValues); // Reset form values to initial
+
     this.itemsForm.reset(this.originalFormValues);
-    this.isEditMode = false;
-    this.itemsForm.disable();
     this.isSaveButtonEnabled = false;
-    this.onDetailsMode();
+    this.isEditMode = false;
+    this.onCancel.emit();
+
   }
+
+
 
   showSpinner(): void {
     this.isLoading = true;
@@ -133,7 +124,4 @@ export class EditComponent implements OnInit {
       : false;
   }
 
-  onDetailsMode() {
-    this._formService.isEditMode.next(false);
-  }
 }

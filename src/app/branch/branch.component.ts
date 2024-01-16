@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemAttributesComponent } from "../item-attributes/item-attributes.component";
+import { ItemAttributesComponent } from "../old/item-attributes/item-attributes.component";
 import { branchFormFields } from './../branch-form.config';
 
 @Component({

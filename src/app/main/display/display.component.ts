@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ItemFormField } from '../../item-form-field';
+import { ItemAttribute } from '../../ItemAttribute';
 import { CommonModule } from '@angular/common';
 import { FormServiceService } from '../../serveses/form-service.service';
 
@@ -18,10 +18,10 @@ export class DisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() formFields: ItemFormField[] = [];
+  @Input() formFields: ItemAttribute[] = [];
 
-  getRowFields(fields: ItemFormField[]): ItemFormField[][] {
-    const rows: ItemFormField[][] = [];
+  getRowFields(fields: ItemAttribute[]): ItemAttribute[][] {
+    const rows: ItemAttribute[][] = [];
     const itemsPerRow = 3;
 
     for (let i = 0; i < fields.length; i += itemsPerRow) {

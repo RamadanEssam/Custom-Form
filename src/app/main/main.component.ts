@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DisplayComponent } from './display/display.component';
-import { ItemFormField } from '../item-form-field';
+import { ItemAttribute } from '../ItemAttribute';
 import { EditComponent } from './edit/edit.component';
 import { FormServiceService } from '../serveses/form-service.service';
 
@@ -14,7 +14,7 @@ import { FormServiceService } from '../serveses/form-service.service';
 })
 export class MainComponent  implements OnInit {
   @Input() isEditable = false;
-  @Input() formFields: ItemFormField[] = [];
+  @Input() formFields: ItemAttribute[] = [];
   isEditMode!: boolean;
 
   constructor(private _formService: FormServiceService) {}

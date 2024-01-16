@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemAttributesComponent } from "../item-attributes/item-attributes.component";
+import { ItemAttributesComponent } from "../old/item-attributes/item-attributes.component";
 import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { FormFieldType } from '../form-field-type.enum';
+import { AttributeType } from '../AttributeType';
 
 @Component({
     selector: 'app-user',
@@ -13,12 +13,12 @@ import { FormFieldType } from '../form-field-type.enum';
 })
 export class UserComponent {
    userFormFields = [
-    { label: 'SIM card Number', controlName: 'sIMCardNumber', defaultValue: '980-476', validators: [Validators.required], type: FormFieldType.Text},
-    { label: 'Provider', controlName: 'Provider', defaultValue: 'Etisalat', validators: [Validators.required], type: FormFieldType.Text },
-    { label: 'Device code', controlName: 'Devicecode', defaultValue: '2765-3656-4356-2543', validators: [Validators.required  ], type: FormFieldType.Text },
-    { label: 'Device type', controlName: 'Device type', defaultValue: 'device type', validators: [Validators.required  ], type:FormFieldType.Text },
-     { label: 'Version', controlName: 'Version', defaultValue: '0,001', validators: [Validators.required  ], type:FormFieldType.Text },
-     { label: 'Vendor', controlName: 'Vendor', defaultValue: 'Vendor name', validators: [Validators.required ], type:FormFieldType.Text },
+    { label: 'SIM card Number', controlName: 'sIMCardNumber', defaultValue: '980-476', validators: [Validators.required], type: AttributeType.Text},
+    { label: 'Provider', controlName: 'Provider', defaultValue: 'Etisalat', validators: [Validators.required], type: AttributeType.Text },
+    { label: 'Device code', controlName: 'Devicecode', defaultValue: '2765-3656-4356-2543', validators: [Validators.required  ], type: AttributeType.Text },
+    { label: 'Device type', controlName: 'Device type', defaultValue: 'device type', validators: [Validators.required  ], type:AttributeType.Text },
+     { label: 'Version', controlName: 'Version', defaultValue: '0,001', validators: [Validators.required  ], type:AttributeType.Text },
+     { label: 'Vendor', controlName: 'Vendor', defaultValue: 'Vendor name', validators: [Validators.required ], type:AttributeType.Text },
   ];
 
 onUserDataChanged(userData: any) {

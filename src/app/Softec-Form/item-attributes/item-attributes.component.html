@@ -1,0 +1,4 @@
+ <app-form *ngIf="isEditMode" [formFields]="formFields" (submit)="toggleEditMode()" (onCancel)="toggleEditMode()" ></app-form>
+<app-item-details *ngIf="!isEditMode" [formFields]="formFields" (edit)="toggleEditMode()"></app-item-details>
+
+

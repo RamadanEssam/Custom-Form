@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ItemAttributesComponent } from "./item-attributes/item-attributes.component";
+import { ItemAttributesComponent } from "./old/item-attributes/item-attributes.component";
 import { VehicleComponent } from "./vehicle/vehicle.component";
 import { UserComponent } from "./user/user.component";
 import { AreaComponent } from "./area/area.component";
