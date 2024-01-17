@@ -1,0 +1,6 @@
+<ul class="stepper">
+  <li *ngFor="let step of steps; let i = index" class="step" [class.active]="step.isActive" (click)="setActiveStep(i)">
+    <span class="step-icon" [innerHTML]="getStepIcon(step.isActive)"></span>
+    <span class="step-title">{{ step.title }}</span>
+  </li>
+</ul>

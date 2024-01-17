@@ -1,0 +1,46 @@
+.tracker {
+  position: relative;
+  width: 200px;
+  margin: auto;
+}
+
+.tracker-step {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 10px 0;
+}
+
+.tracker-circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #FFC107;
+  position: absolute;
+  z-index: 1;
+  &.inactive {
+    background: #aaa;
+  }
+}
+
+.tracker-line {
+  position: absolute;
+  left: 6px;
+  width: 2px;
+  height: calc(100% - 20px);
+  background: #FFC107;
+
+  &.inactive {
+    background: #aaa;
+  }
+}
+
+.step-title {
+  margin-left: 40px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.active {
+  background: #FFC107;
+}

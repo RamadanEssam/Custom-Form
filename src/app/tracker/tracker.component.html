@@ -1,0 +1,13 @@
+<div class="tracker">
+  <div class="tracker-line" [ngClass]="{'active': steps[steps.length - 1].active} "></div>
+
+  <ng-container *ngFor="let step of steps; let i = index">
+    <div class="tracker-step">
+      <div class="tracker-circle" [ngClass]="{'inactive': !step.active}"></div>
+      <div class="step-title" (click)="gotoStep(i)">{{ step.name }}</div>
+    </div>
+    <div *ngIf="i < steps.length - 1" class="tracker-line" [ngClass]="{'inactive': !steps[i + 1].active}"></div>
+  </ng-container>
+</div>
+
+

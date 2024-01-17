@@ -1,0 +1,35 @@
+.stepper {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; // Adjust spacing as necessary
+    cursor: pointer;
+
+    &.active .step-icon {
+      background-color: orange; // Use the actual color from your SVG
+    }
+
+    &:not(:last-child)::after {
+      content: '';
+      display: block;
+      width: 2px; // Line thickness
+      height: 20px; // Space between steps
+      background: #DF9C49; // Line color
+      margin: 0 12px; // Align with the center of the icon
+    }
+
+    .step-icon {
+      padding-left: 10px; // Adjust as necessary
+    }
+
+    .step-title {
+      padding-left: 10px; // Adjust as necessary
+    }
+  }
+}

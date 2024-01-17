@@ -13,13 +13,16 @@ import { VehicalActionsComponent } from './vehical-actions/vehical-actions.compo
 import { VechicalPanelComponent } from './vechical-panel/vechical-panel.component';
 import { ItemDetailsPanelComponent } from './item-details-panel/item-details-panel.component';
 import { SpinnerComponent } from "./shared/spinner/spinner.component";
+import { VehicleTabsComponent } from './vehicle-tabs/vehicle-tabs.component';
+import { TrackerComponent } from './tracker/tracker.component';
+import { StepperComponent } from "./stepper/stepper.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [CommonModule, RouterOutlet, ItemAttributesComponent, VehicleComponent, UserComponent, AreaComponent, BranchComponent, ItemSelectorComponent, MenuOneComponent, ItemActionsComponent, VehicalActionsComponent, VechicalPanelComponent, ItemDetailsPanelComponent, SpinnerComponent]
+    imports: [CommonModule, RouterOutlet, ItemAttributesComponent, VehicleComponent, UserComponent, AreaComponent, BranchComponent, ItemSelectorComponent, MenuOneComponent, ItemActionsComponent, VehicalActionsComponent, VechicalPanelComponent, ItemDetailsPanelComponent, SpinnerComponent, VehicleTabsComponent, TrackerComponent, StepperComponent]
 })
 export class AppComponent {
   title = 'task-one';
